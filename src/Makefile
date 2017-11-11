@@ -112,7 +112,7 @@ endif
 
 ifdef CFG_GCC
   CFG_INFO := $(info cfg: using gcc)
-  CFG_GCC_CFLAGS += -Wall -Werror -fno-rtti -fno-exceptions -g
+  CFG_GCC_CFLAGS += -Wall -fno-rtti -fno-exceptions -g
   CFG_GCC_LINK_FLAGS += -g
   CFG_COMPILE_C = $(CFG_GCC_CROSS)g++ $(CFG_GCC_CFLAGS) -c -o $(1) $(2)
   CFG_LINK_C = $(CFG_GCC_CROSS)g++ $(CFG_GCC_LINK_FLAGS) -o $(1)
@@ -193,8 +193,8 @@ ML_INCS := -I boot/fe -I boot/me -I boot/be -I boot/driver/$(VARIANT) \
   -I boot/driver -I boot/util $(LLVM_INCS)
 ML_LIBS := unix.cma nums.cma bigarray.cma
 ML_NATIVE_LIBS := unix.cmxa nums.cmxa bigarray.cmxa
-OCAMLC_FLAGS := -g $(ML_INCS) -w Ael -warn-error Ael
-OCAMLOPT_FLAGS := $(ML_INCS) -w Ael -warn-error Ael \
+OCAMLC_FLAGS := -g $(ML_INCS) -w Ael
+OCAMLOPT_FLAGS := $(ML_INCS) -w Ael \
                     $(CFG_OCAMLOPT_PROFILE_FLAGS)
 
 ifdef CFG_LLVM_CONFIG
